@@ -1,0 +1,6 @@
+{
+  "name": "Basic IR fan control",
+  "filename": "basic-ir-fan-control.js",
+  "render_readme": true,
+  "homeassistant": "2025.1.0"
+}

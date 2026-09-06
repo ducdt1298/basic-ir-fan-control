@@ -1,0 +1,4 @@
+# Everything here is served to a browser and read on Linux CI. CRLF line
+# endings would show up in the shipped JavaScript, so pin them to LF
+# regardless of which platform the repository is checked out on.
+* text=auto eol=lf
