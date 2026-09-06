@@ -94,7 +94,7 @@ buttons:
     icon: mdi:power
     accent: true
     color: "#f0c419"
-    text_color: "#222"
+    text_color: black
   - { name: SPEED,  command: extras/speed,  icon: mdi:fan-chevron-up }
   - { name: OSCIL., command: extras/oscil,  icon: mdi:arrow-oscillating }
   - { name: RHYTHM, command: extras/rhythm, icon: mdi:weather-windy }
@@ -144,6 +144,13 @@ rhythm mode produces.
 Any [Material Design Icon](https://pictogrammers.com/library/mdi/) works. An
 icon name that does not exist renders as an empty space, not an error, so check
 the button after changing one.
+
+### A note on colours
+
+`color` and `text_color` take any CSS colour. Hex works, but prefer a keyword or
+a full six-digit hex when writing documentation: HACS's own README renderer
+turns a short `#nnn` hex into a link to the issue of that number, even inside a
+code block.
 
 ## Troubleshooting
 
