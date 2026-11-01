@@ -18,7 +18,7 @@
  * active theme.
  */
 
-const VERSION = "1.0.0";
+const VERSION = "1.1.0";
 
 const CARD_TYPE = "basic-ir-fan-control";
 const DOMAIN = "hub_ir";
@@ -102,6 +102,13 @@ const STYLES = `
     background: var(--btn-color, var(--primary-color));
     color: var(--btn-text-color, var(--text-primary-color, #fff));
     border-color: transparent;
+  }
+
+  /* A tinted glyph on an ordinary key. For a stateless device a filled key
+     reads as "this is on" and is wrong half the time; a coloured icon only
+     says "this is the one to look for". */
+  ha-icon {
+    color: var(--btn-icon-color, inherit);
   }
 
   button.flash {
@@ -307,9 +314,12 @@ class BasicIrFanControl extends HTMLElement {
     const text = button.text_color
       ? ` --btn-text-color: ${esc(button.text_color)};`
       : "";
+    const icon = button.icon_color
+      ? ` --btn-icon-color: ${esc(button.icon_color)};`
+      : "";
 
     return `<button class="${classes.join(" ")}" data-index="${index}"
-      style="${colour}${text}" ${this._busy !== null ? "disabled" : ""}
+      style="${colour}${text}${icon}" ${this._busy !== null ? "disabled" : ""}
       title="${esc(button.command)}">
       ${button.icon ? `<ha-icon icon="${esc(button.icon)}"></ha-icon>` : ""}
       ${button.name ? `<span class="label">${esc(button.name)}</span>` : ""}

@@ -92,9 +92,7 @@ buttons:
   - name: OFF/ON
     command: toggle
     icon: mdi:power
-    accent: true
-    color: "#f0c419"
-    text_color: black
+    icon_color: "#f0c419"
   - { name: SPEED,  command: extras/speed,  icon: mdi:fan-chevron-up }
   - { name: OSCIL., command: extras/oscil,  icon: mdi:arrow-oscillating }
   - { name: RHYTHM, command: extras/rhythm, icon: mdi:weather-windy }
@@ -120,8 +118,9 @@ buttons:
 | `command` | yes | | Path to the code, e.g. `toggle` or `extras/speed` |
 | `name` | no\* | | The label, ideally what the key says on the remote |
 | `icon` | no\* | | Any `mdi:` icon |
+| `icon_color` | no | | Colour of the icon alone, e.g. the remote's yellow on the power key |
 | `accent` | no | `false` | Fill the button, for the one key that matters most |
-| `color` | no | | Background for an accent button, e.g. the remote's yellow |
+| `color` | no | | Background for an accent button |
 | `text_color` | no | | Foreground to go with `color` |
 | `repeat` | no | 1 | Transmit the code this many times (1–100) |
 | `delay` | no | 0.4 | Seconds between repeats |
@@ -147,7 +146,11 @@ the button after changing one.
 
 ### A note on colours
 
-`color` and `text_color` take any CSS colour. Hex works, but prefer a keyword or
+To make one key easy to find, prefer `icon_color` to `accent`. The card cannot
+know whether the fan is running, and a filled power key looks like "on" whether
+it is or not; a coloured icon on an ordinary key only marks where to press.
+
+`icon_color`, `color` and `text_color` take any CSS colour. Hex works, but prefer a keyword or
 a full six-digit hex when writing documentation: HACS's own README renderer
 turns a short `#nnn` hex into a link to the issue of that number, even inside a
 code block.
